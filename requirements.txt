@@ -1,0 +1,3 @@
+python-gitlab==4.13.0
+colorama==0.4.6
+log-with-context==0.6.0
