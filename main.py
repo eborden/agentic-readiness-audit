@@ -20,11 +20,12 @@ FIELDNAMES = [
 ]
 
 
-def main():
+def main(gl=None):
     parse_args()
     setup_logging("main")
 
-    gl = gitlab.Gitlab.from_config("nearpod")
+    if gl is None:
+        gl = gitlab.Gitlab.from_config("nearpod")
     rows = []
 
     for project in gl.projects.list(all=True):
