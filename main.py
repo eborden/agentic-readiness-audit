@@ -1,7 +1,7 @@
 import csv
 import gitlab
 from claude_md_audit.argparse import parse_args
-from claude_md_audit.gitlab import check_files, get_activity_stats
+from claude_md_audit.gitlab import check_files, get_activity_stats, get_test_maturity
 from claude_md_audit.logging import setup_logging
 from claude_md_audit.summary import print_summary
 
@@ -17,6 +17,7 @@ FIELDNAMES = [
     "recent_commit_count",
     "unique_contributors_90d",
     "is_stale",
+    "test_maturity",
 ]
 
 
@@ -41,6 +42,7 @@ def main(gl=None):
             "has_agents_md": file_status["AGENTS.md"],
             "has_either": file_status["CLAUDE.md"] or file_status["AGENTS.md"],
             **activity,
+            "test_maturity": get_test_maturity(project),
         })
 
     with open(OUTPUT_FILE, "w", newline="") as f:

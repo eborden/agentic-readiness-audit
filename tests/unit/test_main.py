@@ -7,6 +7,29 @@ from main import main, FIELDNAMES
 from tests.conftest import make_mock_project, make_mock_commit
 
 
+def test_test_maturity_column_in_csv(tmp_path, monkeypatch):
+    out_file = tmp_path / "out.csv"
+    monkeypatch.setattr(main_module, "OUTPUT_FILE", str(out_file))
+    proj = make_mock_project(path="group/repo", branch="main")
+    gl = _make_gl(proj)
+
+    with patch("main.check_files", return_value=_file_status(has_claude=True)), \
+         patch("main.get_activity_stats", return_value=_activity()), \
+         patch("main.get_test_maturity", return_value="automated") as mock_maturity, \
+         patch("main.print_summary"), \
+         patch("main.parse_args"), \
+         patch("main.setup_logging"):
+        main(gl=gl)
+        mock_maturity.assert_called_once_with(proj)
+
+    with open(out_file, newline="") as f:
+        reader = csv.DictReader(f)
+        written_rows = list(reader)
+
+    assert "test_maturity" in reader.fieldnames
+    assert written_rows[0]["test_maturity"] == "automated"
+
+
 def _file_status(has_claude=False, has_agents=False):
     return {"CLAUDE.md": has_claude, "AGENTS.md": has_agents}
 

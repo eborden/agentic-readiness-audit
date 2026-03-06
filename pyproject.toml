@@ -15,6 +15,7 @@ include = ["claude_md_audit*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
 markers = [
     "integration: marks tests that require GITLAB_TOKEN and live API access",
 ]

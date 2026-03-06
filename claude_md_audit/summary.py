@@ -9,6 +9,7 @@ def print_summary(rows: list[dict]) -> None:
     needs_grooming = []
     artifact = 0
     legacy = 0
+    maturity_counts: dict[str, int] = {}
 
     for row in rows:
         is_stale = _truthy(row.get("is_stale", False))
@@ -23,6 +24,10 @@ def print_summary(rows: list[dict]) -> None:
         else:
             legacy += 1
 
+        tier = row.get("test_maturity")
+        if tier:
+            maturity_counts[tier] = maturity_counts.get(tier, 0) + 1
+
     needs_grooming_count = len(needs_grooming)
 
     print("\n=== Agentic Grooming Summary ===\n")
@@ -30,6 +35,12 @@ def print_summary(rows: list[dict]) -> None:
     print(f"Active + no CLAUDE.md   : {needs_grooming_count:3d} repos  (needs grooming)")
     print(f"Stale  + has CLAUDE.md  : {artifact:3d} repos  (possible artifact)")
     print(f"Stale  + no CLAUDE.md   : {legacy:3d} repos  (legacy/low-priority)")
+
+    if maturity_counts:
+        print("\n--- Test Maturity ---")
+        for tier in ("measured", "automated", "has_tests", "none"):
+            count = maturity_counts.get(tier, 0)
+            print(f"  {tier:<12s}: {count:3d} repos")
 
     ranked = [
         r for r in needs_grooming

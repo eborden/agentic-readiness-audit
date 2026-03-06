@@ -146,6 +146,14 @@ def test_print_summary_excludes_none_days(capsys):
     assert "group/no-days" not in out
 
 
+def test_print_summary_shows_maturity_buckets(capsys):
+    rows = [{"test_maturity": "automated"}, {"test_maturity": "none"}]
+    print_summary(rows)
+    out = capsys.readouterr().out
+    assert "automated" in out
+    assert "none" in out
+
+
 def test_print_summary_excludes_empty_string_days(capsys):
     rows = [
         {
