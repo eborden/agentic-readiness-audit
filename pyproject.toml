@@ -1,5 +1,5 @@
 [project]
-name = "claude-md-audit"
+name = "agentic-readiness-audit"
 version = "0.1.0"
 requires-python = ">=3.13"
 
@@ -11,7 +11,7 @@ test = [
 ]
 
 [tool.setuptools.packages.find]
-include = ["claude_md_audit*"]
+include = ["agentic_readiness_audit*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

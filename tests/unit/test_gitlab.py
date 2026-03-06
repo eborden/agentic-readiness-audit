@@ -3,7 +3,7 @@ from freezegun import freeze_time
 from unittest.mock import MagicMock
 import gitlab.exceptions
 
-from claude_md_audit.gitlab import check_files, get_activity_stats
+from agentic_readiness_audit.gitlab import check_files, get_activity_stats
 
 
 # ---------------------------------------------------------------------------

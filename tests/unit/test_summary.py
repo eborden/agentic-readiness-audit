@@ -1,5 +1,5 @@
 import pytest
-from claude_md_audit.summary import print_summary, _truthy
+from agentic_readiness_audit.summary import print_summary, _truthy
 
 
 # ---------------------------------------------------------------------------

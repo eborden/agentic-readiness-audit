@@ -3,7 +3,7 @@ import logging.config
 from log_with_context import add_logging_context, Logger
 import os
 import sys
-from claude_md_audit.env import log_level
+from agentic_readiness_audit.env import log_level
 
 # Setup logging
 logging.config.dictConfig(
@@ -11,7 +11,7 @@ logging.config.dictConfig(
         "version": 1,
         "disable_existing_loggers": True,
         "formatters": {
-            "simple": {"()": "claude_md_audit.logging_cli_formatter.CustomFormatter"},
+            "simple": {"()": "agentic_readiness_audit.logging_cli_formatter.CustomFormatter"},
         },
         "handlers": {
             "console": {

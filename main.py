@@ -1,11 +1,11 @@
 import csv
 import gitlab
-from claude_md_audit.argparse import parse_args
-from claude_md_audit.gitlab import check_files, get_activity_stats, get_test_maturity
-from claude_md_audit.logging import setup_logging
-from claude_md_audit.summary import print_summary
+from agentic_readiness_audit.argparse import parse_args
+from agentic_readiness_audit.gitlab import check_files, get_activity_stats, get_test_maturity
+from agentic_readiness_audit.logging import setup_logging
+from agentic_readiness_audit.summary import print_summary
 
-OUTPUT_FILE = "claude_md_audit.csv"
+OUTPUT_FILE = "agentic_readiness_audit.csv"
 FIELDNAMES = [
     "project_path",
     "default_branch",

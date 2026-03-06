@@ -1,4 +1,4 @@
-# claude-md-audit
+# agentic-readiness-audit
 
 Scans all GitLab group projects for `CLAUDE.md` / `AGENTS.md` presence, writes a CSV report, and prints a bucketed summary.
 
@@ -6,7 +6,7 @@ Scans all GitLab group projects for `CLAUDE.md` / `AGENTS.md` presence, writes a
 
 ```
 main.py                        # Entry point; orchestrates project iteration and CSV output
-claude_md_audit/
+agentic_readiness_audit/
   argparse.py                  # CLI argument parser (build_parser / parse_args)
   env.py                       # Environment variables (LOG_LEVEL)
   gitlab.py                    # check_files(), get_activity_stats(), get_test_maturity() — pure project logic
@@ -26,7 +26,7 @@ tests/
 python main.py
 ```
 
-Output: `claude_md_audit.csv` + console summary.
+Output: `agentic_readiness_audit.csv` + console summary.
 
 Environment variables:
 - `LOG_LEVEL` — log verbosity (default: `INFO`)
@@ -74,6 +74,6 @@ GITLAB_TOKEN=<token> pytest tests/integration/ -v -m integration
 ## Docker
 
 ```bash
-docker build -t claude-md-audit .
-docker run --rm -v ~/.python-gitlab.cfg:/root/.python-gitlab.cfg claude-md-audit
+docker build -t agentic-readiness-audit .
+docker run --rm -v ~/.python-gitlab.cfg:/root/.python-gitlab.cfg agentic-readiness-audit
 ```

@@ -2,7 +2,7 @@ import gitlab.exceptions
 from unittest.mock import MagicMock
 import pytest
 
-from claude_md_audit.gitlab import get_test_maturity
+from agentic_readiness_audit.gitlab import get_test_maturity
 
 
 # ---------------------------------------------------------------------------

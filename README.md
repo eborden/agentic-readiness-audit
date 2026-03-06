@@ -1,4 +1,4 @@
-# claude-md-audit
+# agentic-readiness-audit
 
 Scans all GitLab group projects for `CLAUDE.md` / `AGENTS.md` presence and test maturity, writes a CSV report, and prints a bucketed summary.
 
@@ -9,7 +9,7 @@ Scans all GitLab group projects for `CLAUDE.md` / `AGENTS.md` presence and test 
 python main.py
 ```
 
-Output: `claude_md_audit.csv` + console summary.
+Output: `agentic_readiness_audit.csv` + console summary.
 
 ## Tests
 

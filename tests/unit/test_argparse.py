@@ -1,5 +1,5 @@
 import argparse
-from claude_md_audit.argparse import build_parser, parse_args
+from agentic_readiness_audit.argparse import build_parser, parse_args
 
 
 def test_build_parser_returns_argument_parser():
